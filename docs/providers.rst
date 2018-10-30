@@ -44,6 +44,19 @@ Development callback URL
     http://localhost:8000/accounts/500px/login/callback/
 
 
+AgaveAPI
+--------
+
+Account Signup
+    https://public.agaveapi.co/create_account
+
+App registration
+    Run ``client-create`` from the cli: https://bitbucket.org/agaveapi/cli/overview
+
+Development callback URL
+    http://localhost:8000/accounts/agave/login/callback/
+    *May require https url, even for localhost*
+
 Amazon
 ------
 
@@ -178,9 +191,17 @@ Development callback URL
     http://localhost:8000/accounts/box/login/callback/
 
 
+CERN
+----
+App registration (get your key and secret here)
+    https://sso-management.web.cern.ch/OAuth/RegisterOAuthClient.aspx
+
+CERN OAuth2 Documentation
+    https://espace.cern.ch/authentication/CERN%20Authentication/OAuth.aspx
+
+
 Dataporten
 ----------
-
 App registration (get your key and secret here)
     https://docs.dataporten.no/docs/gettingstarted/
 
@@ -644,6 +665,32 @@ Example:
     }
 
 
+Globus
+------
+
+Registering an application:
+    https://developers.globus.org/
+
+By default, you will have access to the openid, profile, and offline_access
+scopes.  With the offline_access scope, the API will provide you with a
+refresh token.  For additional scopes, see the Globus API docs:
+    https://docs.globus.org/api/auth/reference/
+
+.. code-block:: python
+
+    SOCIALACCOUNT_PROVIDERS = {
+        'globus': {
+            'SCOPE': [
+                'openid',
+                'profile',
+                'email',
+                'urn:globus:auth:scope:transfer.api.globus.org:all'
+            ]
+        }
+    }
+
+
+
 Google
 ------
 
@@ -756,7 +803,8 @@ You can specify the scope and fields to fetch as follows:
     SOCIALACCOUNT_PROVIDERS = {
         'linkedin': {
             'SCOPE': [
-                'r_emailaddress',
+                'r_basicprofile',
+                'r_emailaddress'
             ],
             'PROFILE_FIELDS': [
                 'id',
@@ -783,6 +831,19 @@ using the same app. Attempting to do so resulted in a weird error message when
 fetching the access token::
 
     missing required parameters, includes an invalid parameter value, parameter more then once. : Unable to retrieve access token : authorization code not found
+
+If you are using tokens originating from the mobile SDK, you will need to specify
+additional headers:
+
+.. code-block:: python
+
+    SOCIALACCOUNT_PROVIDERS = {
+        'linkedin': {
+            'HEADERS': {
+                'x-li-src': 'msdk'
+            }
+        }
+    }
 
 App registration (get your key and secret here)
     https://www.linkedin.com/secure/developer?newapp=
@@ -1375,8 +1436,16 @@ App registration (get your key and secret here)
     https://developer.vimeo.com/apps
 
 Development callback URL
-    http://localhost:8000
+    http://localhost:8000/a
 
+Vimeo (OAuth 2)
+-----
+
+App registration (get your key and secret here)
+    https://developer.vimeo.com/apps
+
+Development callback URL
+    http://localhost:8000/accounts/vimeo_oauth2/login/callback/
 
 VK
 --

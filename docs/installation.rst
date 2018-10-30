@@ -41,12 +41,14 @@ settings.py (Important - Please note 'django.contrib.sites' is required as INSTA
         ...
         # The following apps are required:
         'django.contrib.auth',
+        'django.contrib.messages',
         'django.contrib.sites',
 
         'allauth',
         'allauth.account',
         'allauth.socialaccount',
         # ... include the providers you want to enable:
+        'allauth.socialaccount.providers.agave',
         'allauth.socialaccount.providers.amazon',
         'allauth.socialaccount.providers.angellist',
         'allauth.socialaccount.providers.asana',
@@ -57,11 +59,13 @@ settings.py (Important - Please note 'django.contrib.sites' is required as INSTA
         'allauth.socialaccount.providers.bitbucket',
         'allauth.socialaccount.providers.bitbucket_oauth2',
         'allauth.socialaccount.providers.bitly',
+        'allauth.socialaccount.providers.cern',
         'allauth.socialaccount.providers.coinbase',
         'allauth.socialaccount.providers.dataporten',
         'allauth.socialaccount.providers.daum',
         'allauth.socialaccount.providers.digitalocean',
         'allauth.socialaccount.providers.discord',
+        'allauth.socialaccount.providers.disqus',
         'allauth.socialaccount.providers.douban',
         'allauth.socialaccount.providers.draugiem',
         'allauth.socialaccount.providers.dropbox',
@@ -109,6 +113,7 @@ settings.py (Important - Please note 'django.contrib.sites' is required as INSTA
         'allauth.socialaccount.providers.twitter',
         'allauth.socialaccount.providers.untappd',
         'allauth.socialaccount.providers.vimeo',
+        'allauth.socialaccount.providers.vimeo_oauth2',
         'allauth.socialaccount.providers.vk',
         'allauth.socialaccount.providers.weibo',
         'allauth.socialaccount.providers.weixin',
