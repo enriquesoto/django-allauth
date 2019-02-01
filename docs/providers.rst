@@ -57,6 +57,17 @@ Development callback URL
     http://localhost:8000/accounts/agave/login/callback/
     *May require https url, even for localhost*
 
+.. code-block:: python
+
+    SOCIALACCOUNT_PROVIDERS = {
+        'agave': {
+            'API_URL': 'https://api.tacc.utexas.edu',
+        }
+    }
+
+In the absense of a specified API_URL, the default Agave tenant is
+    https://public.agaveapi.co/
+
 Amazon
 ------
 
@@ -289,30 +300,6 @@ App registration (get your key and secret here)
 
 Development callback URL
     http://localhost:8000/accounts/dropbox/login/callback/
-
-Dwolla
-------------
-
-App registration (get your key and secret here)
-    https://dashboard-uat.dwolla.com/applications
-
-Development callback URL
-    http://127.0.0.1:8000/accounts/dwolla/login/callback/
-
-
-.. code-block:: python
-
-    SOCIALACCOUNT_PROVIDERS = {
-        'dwolla': {
-            'SCOPE': [
-                'Send',
-                'Transactions',
-                'Funding',
-                'AccountInfoFull',
-            ],
-            'ENVIROMENT':'sandbox',
-        }
-    }
 
 Dwolla
 ------------
@@ -697,7 +684,7 @@ Google
 The Google provider is OAuth2 based.
 
 More info:
-    http://code.google.com/apis/accounts/docs/OAuth2.html#Registering
+    https://developers.google.com/identity/protocols/OAuth2
 
 
 App registration
@@ -768,6 +755,25 @@ App registration (get your key and secret here)
 Development callback URL
     http://localhost:8000/accounts/instagram/login/callback/
 
+
+JupyterHub
+----------
+
+Documentation on configuring a key and secret key
+    https://jupyterhub.readthedocs.io/en/stable/api/services.auth.html
+
+Development callback URL
+    http://localhost:800/accounts/jupyterhub/login/callback/
+
+Specify the URL of your JupyterHub server as follows:
+
+.. code-block:: python
+
+    SOCIALACCOUNT_PROVIDERS = {
+        'jupyterhub': {
+            'API_URL': 'https://jupyterhub.example.com',
+        }
+    }
 
 Kakao
 -----
@@ -1306,6 +1312,18 @@ Server Fault). This can be controlled by means of the ``SITE`` setting:
             'SITE': 'stackoverflow',
         }
     }
+
+
+Steam
+-----
+
+Steam is an OpenID-compliant provider. However, the `steam` provider allows
+access to more of the user's details such as username, full name, avatar, etc.
+
+You need to register an API key here:
+    https://steamcommunity.com/dev/apikey
+
+Make sure to create a Steam SocialApp with that secret key.
 
 
 Stripe
